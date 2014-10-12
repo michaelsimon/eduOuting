@@ -3,6 +3,7 @@
 <table class="table table-hover">
 	<tr>
 		<th>Outing Name</th>
+		<th>Outing Code</th>
 		<th>Section</th>
 		<th>Date</th>
 		<th></th>
@@ -12,7 +13,8 @@
     	@teacher = Teacher.find(@section.teacher_id) %>
 	<tr>
 		<td><%= trip.name %></td>
-		<td><%= @section.name %></td>
+		<td><%= trip.public_id %></td>
+		<td><%= link_to @section.name, section_path(@section.id) %></td>
 		<td><%= Date.parse(trip.start_date.to_s).strftime("%B %d, %Y") %></td>
 		<td><%= link_to "View", trip_path(trip.public_id), class: "btn btn-info btn-sm" %>&nbsp;&nbsp;&nbsp;<%= link_to "Edit", edit_trip_path(trip.public_id), class: "btn btn-warning btn-sm" %>&nbsp;&nbsp;&nbsp;<%= link_to "Delete", trip_path(trip.public_id)	, method: 'delete', confirm: "Are You Sure?", class: "btn btn-danger btn-sm" %></td>
 	</tr>

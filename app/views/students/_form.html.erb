@@ -8,27 +8,26 @@
 <% end %>
 
 <%= form_for @student do |f| %>
-  <div>
+  <div class="form-group">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, class: 'form-control' %>
   </div>
-    <div>
+   <div class="form-group">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: 'form-control' %>
   </div>
-  <div>
-    <%= f.label :emerg_contact_name %>
-    <%= f.text_field :emerg_contact_name %>
+  <div class="form-group">
+    <strong>Emergency Contact - Full Name</strong>
+    <%= f.text_field :emerg_contact_name, class: 'form-control' %>
   </div>
-    <div>
-    <%= f.label :emerg_contact_phone %>
-    <%= f.text_field :emerg_contact_phone %>
+    <div class="form-group">
+    <strong>Emergency Contact - Phone Number</strong>
+    <%= f.text_field :emerg_contact_phone, class: 'form-control' %>
   </div>
 
-  <div>
-Section
-    <% section_options = options_from_collection_for_select(@sections, 'id', 'name') %>
-    <%= f.select :section_id, section_options, include_blank: true %>
+  <div class="form-group">
+    <%= f.label :section %>
+    <%= f.collection_select :section_id,  @sections , :id, :name, {include_blank: true}, {class: 'form-control'} %>
   </div>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-lg btn-default' %>
 <% end %>

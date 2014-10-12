@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title></title>
+    <title>eduOuting</title>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application" %>
     <%= csrf_meta_tags %>
@@ -44,6 +44,13 @@
     </nav>
 
     <%= yield %>
-    
+    <div class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+  <center>
+  Created by Michael Simon &copy; 2014 <strong>&bull;</strong> Made with &hearts; in NYC @ GA <br/>
+  Powered by <%= image_tag("foursquare-icon.png") %>oursquare
+  </center>
+  </div>
+</nav>
   </body>
 </html>
