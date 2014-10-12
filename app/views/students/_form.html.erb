@@ -26,9 +26,9 @@
   </div>
 
   <div>
-  Add to Section
+Section
     <% section_options = options_from_collection_for_select(@sections, 'id', 'name') %>
-    <%= f.select :section_ids, section_options, include_blank: true %>
+    <%= f.select :section_id, section_options, include_blank: true %>
   </div>
   <%= f.submit %>
 <% end %>

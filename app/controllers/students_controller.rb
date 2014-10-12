@@ -3,30 +3,28 @@ class StudentsController < ApplicationController
   before_action :load_student, only: [:edit, :update, :show, :destroy]
 
   def index
-    @students = Student.all
-    #@sections = Section.where(student_id: @student)
   end
 
   def show
   end
 
   def new
-    #@student = Student.new
-    @sections = Section.all
+    @student = Student.new
+    @sections = Section.where(teacher_id: current_user.id)
   end
 
   def create
     @student = Student.new safe_student_params
 
     if @student.save
-      redirect_to @student
+      redirect_to section_path(@student.section_id)
     else
       render 'new'
     end
   end
 
   def edit
-    @section = Section.find(@student.section_id)
+    @sections = Section.where(teacher_id: current_user.id)
   end
 
   def destroy
@@ -35,7 +33,7 @@ class StudentsController < ApplicationController
 
 def update
     if @student.update safe_student_params
-      redirect_to @student
+      redirect_to section_path(@student.section_id)
     else
       render 'edit'
     end
