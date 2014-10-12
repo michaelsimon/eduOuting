@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   #root 'welcome#index'
   root 'homes#index'
-  resources :sections
+  resources :sections, :students
   resources :teachers, :only => [:edit, :update]
   resources :homes, :only =>[:index]
   resources :trips, param: :public_id
