@@ -1,0 +1,14 @@
+<h2><%= @teacher.first_name %> <%= @teacher.last_name %></h2>
+
+<strong>User Account: </strong><%= @useracct %><br />
+<h3>Sections</h3>
+<table>
+	<tr>
+		<td>Name</td>
+		<td># of Students</td>
+		<td>&nbsp;</td>
+	</tr>
+<% @sections.each do |section| %>
+<tr><td><%= section.name %></td><td># of Students</td> <td><%= link_to "View More Details", section_path(section.id) %></td></tr>
+<% end %>
+</table>

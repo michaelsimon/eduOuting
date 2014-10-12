@@ -1,0 +1,24 @@
+<% if @teacher.errors.any? %>
+  <h2>There were errors saving your Teacher information</h2>
+  <ul>
+    <% @teacher.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @teacher do |f| %>
+    <div class="form-group">
+    <%= f.label  "Login" %><br/>
+    <span class="form-control-static"><%= @user %></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Edit E-mail", edit_user_registration_path %>
+  </div>
+  <div class="form-group">
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+    <div class="form-group">
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name, class: 'form-control'  %>
+  </div>
+  <%= f.submit 'Update', class: 'btn btn-lg btn-default'  %>
+<% end %>

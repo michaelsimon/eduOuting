@@ -1,0 +1,34 @@
+<% if @student.errors.any? %>
+  <h2>There were errors saving your Student information</h2>
+  <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @student do |f| %>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+    <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div>
+    <%= f.label :emerg_contact_name %>
+    <%= f.text_field :emerg_contact_name %>
+  </div>
+    <div>
+    <%= f.label :emerg_contact_phone %>
+    <%= f.text_field :emerg_contact_phone %>
+  </div>
+
+  <div>
+  Add to Section
+    <% section_options = options_from_collection_for_select(@sections, 'id', 'name') %>
+    <%= f.select :section_ids, section_options, include_blank: true %>
+  </div>
+  <%= f.submit %>
+<% end %>

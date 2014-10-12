@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1>Welcome to eduOuting</h1>
+  <h3>Lets go somewhere! eduOuting allows teachers, students and parents to view and maintain information about upcoming class outings.</h3>
+   <br/>
+  <h4>Students/Parents: Enter your Outing ID to View Your Outing</h4>
+   <form class="form-group" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" width="6" name="public_id">
+        </div>
+        <button type="submit" class="btn btn-primary">Go!</button>
+      </form>
+ <h4>Teachers: <%= link_to 'Create an account', new_user_registration_path %> or <%= link_to 'Log-in', new_user_session_path %> to manage your trips</h4>
+
+</div>

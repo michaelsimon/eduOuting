@@ -1,0 +1,82 @@
+<script>
+    $(function () {
+        $("#venue").foursquareAutocomplete({
+            'latitude': 40.7,
+            'longitude': -74,
+            'client_id': "<%= Rails.application.secrets.fsq_client_id %>",
+            'client_secret': "<%= Rails.application.secrets.fsq_client_secret %>",         
+            'minLength': 3,
+            'search': function (event, ui) {
+                $("#venue-name").html(ui.item.name);
+                $("#venue-id").val(ui.item.id);
+                $("#venue-address").html(ui.item.address);
+                $("#venue-cityLine").html(ui.item.cityLine);
+                $("#venue-icon").attr("src", ui.item.photo);
+                return false;
+            },
+            'onError' : function (errorCode, errorType, errorDetail) {
+              var message = "Foursquare Error: Code=" + errorCode + ", errorType= " + errorType + ", errorDetail= " + errorDetail;
+              log(message);
+            }
+            
+        });
+    });
+    function log(message) {
+        $("<div/>").text(message).prependTo("#log");
+        $("#log").scrollTop(0);
+    }
+</script>
+<% if @trip.errors.any? %>
+  <h2>There were errors saving your information</h2>
+  <ul>
+    <% @trip.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @trip do |f| %>
+    <div class="form-group">
+        <%= f.label "Trip Name" %><br>
+        <%= f.text_field :name, placeholder: "Enter name", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Section" %><br />
+
+        <%= f.collection_select :section_id,  @sections , :id, :name, {include_blank: true}, {class: 'form-control'} %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Start Date" %>
+        <%= f.date_field :start_date, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+        <%= f.label "End Date" %>
+        <%= f.date_field :end_date, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :cost %><br />
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <%= f.number_field :cost, class: 'form-control', placeholder: 'Cost' %>
+        </div>
+    </div>
+    <div class="form-group">
+        <%= f.label "Location" %><br />
+        <%= f.text_field :venue, id: 'venue', value: @venue_name, class:'form-control', placeholder: 'Search for location' %>
+        <%= f.hidden_field :foursquare_locid, id: 'venue-id' %>
+    </div>
+    <div>
+        <div id="venue-name" class="autocomplete-name"></div>
+        <div id="venue-address" class="autocomplete-detail"></div>
+        <div id="venue-cityLine" class="autocomplete-detail"></div>
+         <%= @venue %>
+    </div>
+       <br/>
+    <div class="form-group">
+        <%= f.label :details %><br />
+        <%= f.text_area :details, class: 'form-control', rows: 4, placeholder: 'Add additional details...' %>
+    </div>
+<%= f.submit class: 'btn btn-lg btn-default' %>
+<% end %>
+<br />
+<br />

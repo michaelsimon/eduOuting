@@ -1,0 +1,7 @@
+<h3>Edit a Student</h3>
+
+<p><%= render 'form' %></p>
+
+<%= collection_check_boxes(:section, :student_ids, Student.all, :id, :first_name) do |b|
+  b.label(class: "check_box") { b.check_box(class: "check_box") }
+end %>

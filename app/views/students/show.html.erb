@@ -1,0 +1,11 @@
+<h2><%= @student.first_name %> <%= @student.last_name %></h2>
+
+<h3>Sections</h3>
+<table>
+	<tr>
+		<td>Class Name</td>
+	</tr>
+<% @sections.each do |section| %>
+<tr><td><%= section.name %></td></tr>
+<% end %>
+</table>
