@@ -18,6 +18,7 @@
 	<dt>Cost</dt><dd><%= number_to_currency(@trip.cost) %></dd>
 	<dt>Additional Information</dt><dd><%= @trip.details %></dd>
 </dl>
-
-	<% if current_user.id = @teacher.id %><%= link_to 'Edit', edit_trip_path(@trip.public_id), class: 'btn btn-lg btn-default'  %><br /><br/><% end %>
+<% if user_signed_in? %>
+	<% if current_user.id = @teacher.id %><%= link_to 'Edit', edit_trip_path(@trip.public_id), class: 'btn btn-lg btn-default'  %><br /><br/><% end %> 
+<% end %>
 </div>
