@@ -17,7 +17,7 @@
 </form>
 <br/> 
 <% if user_signed_in? %>
-  <% if Teacher.find(current_user.id).first_name.empty? %>
+  <% if Teacher.find(current_user.id).first_name.blank? %>
     <h4>Hi there! It looks like you haven't given us your name. <%= link_to 'Click here', edit_teacher_path(current_user.id) %> to update your profile!</h4>
   <% else %>
     <h4>Hi <%= Teacher.find(current_user.id).first_name %>, Welcome Back!</h4>
