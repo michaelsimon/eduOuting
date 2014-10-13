@@ -26,12 +26,15 @@ class StudentsController < ApplicationController
   def edit
     @sections = Section.where(teacher_id: current_user.id)
   end
-
+  
   def destroy
+    @section_id = @student.section_id
+    Student.find(params[:id]).delete
+    redirect_to section_path(@section_id)
   end
 
 
-def update
+  def update
     if @student.update safe_student_params
       redirect_to section_path(@student.section_id)
     else

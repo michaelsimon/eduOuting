@@ -10,6 +10,11 @@ class SectionsController < ApplicationController
   def show
     @students = Student.where(section_id: @section.id)
   end
+  
+  def destroy
+  Section.find(params[:id]).delete
+  redirect_to sections_path
+  end
 
   def new
     @section = Section.new

@@ -21,4 +21,6 @@
 <% if user_signed_in? %>
 	<% if current_user.id = @teacher.id %><%= link_to 'Edit', edit_trip_path(@trip.public_id), class: 'btn btn-lg btn-default'  %><br /><br/><% end %> 
 <% end %>
+<br/><br/><br/>
 </div>
+

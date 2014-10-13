@@ -45,6 +45,11 @@ def update
       render 'edit'
     end
   end
+
+def destroy
+    Trip.find_by(public_id: params[:public_id]).delete
+    redirect_to trips_path
+  end
   ############
 
   private
