@@ -7,10 +7,9 @@
 		<th>&nbsp;</th>
 	</tr>
 <% @sections.each do |section| %>
-	<% @count_students = Student.where(section_id: section.id).count %>
 	<tr>
 		<td><%= section.name %></td>
-		<td><%= @count_students %></td>
+		<td><%= section.students.count %></td>
 		<td><%= link_to "View", section_path(section.id), class: "btn btn-info btn-sm" %>&nbsp;&nbsp;&nbsp;<%= link_to "Edit", edit_section_path(section.id), class: "btn btn-warning btn-sm" %>&nbsp;&nbsp;&nbsp;<%= link_to "Delete", section_path(section.id)	, method: 'delete', confirm: "Are You Sure?", class: "btn btn-danger btn-sm" %></td>
 
 

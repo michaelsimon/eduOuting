@@ -9,10 +9,9 @@
 		<td>&nbsp;</td>
 	</tr>
 <% @teachers.each do |teacher| %>
-   <% @teacher_count_section = Section.count %>
 	<tr>
 		<td><%= teacher.first_name %> <%= teacher.last_name %></td>
-		<td><%= @teacher_count_section %></td>
+		<td><%= teacher.sections.count %></td>
 		<td><%= link_to "Details" , teacher_path(teacher.id) %> | <%= link_to "Edit", edit_teacher_path(teacher.id) %> | </td>
 	</tr>
 	<% end %>
