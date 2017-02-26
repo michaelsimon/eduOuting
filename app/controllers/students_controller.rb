@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
   def edit
     @sections = Section.where(teacher_id: current_user.id)
   end
-  
+
   def destroy
     @section_id = @student.section_id
     Student.find(params[:id]).delete
@@ -41,13 +41,12 @@ class StudentsController < ApplicationController
       render 'edit'
     end
   end
-  ############
 
   private
   def safe_student_params
     params.require('student').permit(:first_name, :last_name, :emerg_contact_name, :emerg_contact_phone, :section_id)
   end
-  
+
   def load_student
     @student = Student.find params[:id]
   end

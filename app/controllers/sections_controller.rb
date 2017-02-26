@@ -10,10 +10,10 @@ class SectionsController < ApplicationController
   def show
     @students = Student.where(section_id: @section.id)
   end
-  
+
   def destroy
-  Section.find(params[:id]).delete
-  redirect_to sections_path
+    Section.find(params[:id]).delete
+    redirect_to sections_path
   end
 
   def new
@@ -35,20 +35,19 @@ class SectionsController < ApplicationController
     @teachers = Teacher.all
   end
 
-def update
+  def update
     if @section.update safe_section_params
       redirect_to sections_path
     else
       render 'edit'
     end
   end
-  ############
 
   private
   def safe_section_params
     params.require('section').permit(:name)
   end
-  
+
   def load_section
     @section = Section.find params[:id]
   end
