@@ -87,9 +87,9 @@ Rails.application.configure do
   # Email Config via SendMail SMTP
   config.action_mailer.default_url_options = { host: 'murmuring-garden-9718.herokuapp.com' }
 
-  config.ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
 
-  config.ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
