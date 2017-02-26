@@ -1,4 +1,4 @@
-class Section < ActiveRecord::Base
+class Section < ApplicationRecord
 	has_many :students
 	belongs_to :teacher
 	has_many :trips

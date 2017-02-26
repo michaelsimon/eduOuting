@@ -1,4 +1,4 @@
-class Trip < ActiveRecord::Base
+class Trip < ApplicationRecord
 	belongs_to :section
 
 	validates :name, :section_id, :start_date, :presence => true

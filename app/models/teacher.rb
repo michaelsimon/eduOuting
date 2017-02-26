@@ -1,4 +1,4 @@
-class Teacher < ActiveRecord::Base
+class Teacher < ApplicationRecord
 	has_many :sections
-	has_one :user 
+	has_one :user
 end
