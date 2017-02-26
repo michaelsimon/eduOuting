@@ -31,6 +31,9 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # Order test cases that are executed as sorted.
+  config.active_support.test_order = :sorted
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
