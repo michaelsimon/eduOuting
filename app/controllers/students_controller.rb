@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
-  before_action :load_student, only: [:edit, :update, :show, :destroy]
+  before_action :get_student, only: [:edit, :update, :show, :destroy]
 
   def index
   end
@@ -14,8 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new safe_student_params
-
+    @student = Student.new(student_params)
     if @student.save
       redirect_to section_path(@student.section_id)
     else
@@ -27,28 +26,30 @@ class StudentsController < ApplicationController
     @sections = Section.where(teacher_id: current_user.id)
   end
 
-  def destroy
-    @section_id = @student.section_id
-    Student.find(params[:id]).delete
-    redirect_to section_path(@section_id)
-  end
-
-
   def update
-    if @student.update safe_student_params
+    if @student.update(student_params)
       redirect_to section_path(@student.section_id)
     else
       render 'edit'
     end
   end
 
+  def destroy
+    @section_id = @student.section_id
+    if @student.delete
+      redirect_to section_path(@section_id)
+    else
+      redirect_to section_path(@section_id)
+    end
+  end
+
   private
-  def safe_student_params
+  def student_params
     params.require('student').permit(:first_name, :last_name, :emerg_contact_name, :emerg_contact_phone, :section_id)
   end
 
-  def load_student
-    @student = Student.find params[:id]
+  def get_student
+    @student = Student.find(params[:id])
   end
 
 end

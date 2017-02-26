@@ -1,7 +1,6 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
-  before_action :load_section, only: [:edit, :update, :show, :destroy]
-  before_action :safe_section_params, only: [:update, :create]
+  before_action :get_section, only: [:edit, :update, :show, :destroy]
 
   def index
     @sections = Section.where(teacher_id: current_user.id)
@@ -11,23 +10,18 @@ class SectionsController < ApplicationController
     @students = Student.where(section_id: @section.id)
   end
 
-  def destroy
-    Section.find(params[:id]).delete
-    redirect_to sections_path
-  end
-
   def new
     @section = Section.new
     @teachers = Teacher.all
   end
 
   def create
-    @section = Section.new safe_section_params
-    @section.teacher_id = current_user.id
+    @section = Section.new(section_params)
+    @section.teacher = current_user
     if @section.save
-      redirect_to sections_path
+      redirect_to @section
     else
-      render :new
+      render 'new'
     end
   end
 
@@ -36,20 +30,28 @@ class SectionsController < ApplicationController
   end
 
   def update
-    if @section.update safe_section_params
-      redirect_to sections_path
+    if @section.update(section_params)
+      redirect_to @section
     else
       render 'edit'
     end
   end
 
-  private
-  def safe_section_params
-    params.require('section').permit(:name)
+  def destroy
+    if @section.delete
+      redirect_to sections_path
+    else
+      redirect_to @section
+    end
   end
 
-  def load_section
-    @section = Section.find params[:id]
+  private
+  def section_params
+    params.require(:section).permit(:name)
+  end
+
+  def get_section
+    @section = Section.find(params[:id])
   end
 
 end
