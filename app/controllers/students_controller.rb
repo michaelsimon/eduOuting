@@ -35,17 +35,16 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @section_id = @student.section_id
     if @student.delete
-      redirect_to section_path(@section_id)
+      redirect_to section_path(@student.section_id)
     else
-      redirect_to section_path(@section_id)
+      redirect_to section_path(@student.section_id)
     end
   end
 
   private
   def student_params
-    params.require('student').permit(:first_name, :last_name, :emerg_contact_name, :emerg_contact_phone, :section_id)
+    params.require(:student).permit(:first_name, :last_name, :emerg_contact_name, :emerg_contact_phone, :section_id)
   end
 
   def get_student
