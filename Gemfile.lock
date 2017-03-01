@@ -39,7 +39,12 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (6.3.6.2)
+      execjs
     bcrypt (3.1.11)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -184,6 +189,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails (~> 4.1.0)
   devise
   foursquare2 (~> 2.0.1)

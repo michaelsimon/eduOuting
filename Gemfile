@@ -9,6 +9,8 @@ gem 'devise'
 gem 'foursquare2', '~> 2.0.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use Bootstrap for front-end design
+gem 'bootstrap-sass'
 # Use typekit for some fonts
 gem 'typekit-rails'
 # Use Uglifier as compressor for JavaScript assets
