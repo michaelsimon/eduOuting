@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>Welcome to <span style="font-family: chaloops-medium;">eduOuting</span></h1>
+  <h1>Welcome to <span style="font-family: 'Schoolbell', cursive;">eduOuting</span></h1>
   <h3>Lets go somewhere! eduOuting allows teachers, students and parents<br/>to view and maintain information about upcoming class outings.</h3>
    <br/>
   <h4>Enter The Outing Code Provided By Your Teacher to View Your Outing</h4>
@@ -15,14 +15,14 @@
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 </form>
-<br/> 
+<br/>
 <% if user_signed_in? %>
   <% if Teacher.find(current_user.id).first_name.blank? %>
     <h4>Hi there! It looks like you haven't given us your name. <%= link_to 'Click here', edit_teacher_path(current_user.id) %> to update your profile!</h4>
   <% else %>
     <h4>Hi <%= Teacher.find(current_user.id).first_name %>, Welcome Back!</h4>
   <% end %>
-  <h5>Options: <%= link_to "View/Manage Your Class Outings", trips_path %> | <%= link_to "Manage Your Sections", sections_path %></h5>  
+  <h5>Options: <%= link_to "View/Manage Your Class Outings", trips_path %> | <%= link_to "Manage Your Sections", sections_path %></h5>
 <% else %>
   <h4>Teachers: <%= link_to 'Create an account', new_user_registration_path %> or <%= link_to 'Login', new_user_session_path %> to manage your trips</h4>
 <% end %>

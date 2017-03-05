@@ -11,8 +11,6 @@ gem 'foursquare2', '~> 2.0.1'
 gem 'sass-rails', '~> 5.0'
 # Use Bootstrap for front-end design
 gem 'bootstrap-sass'
-# Use typekit for some fonts
-gem 'typekit-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
