@@ -1,7 +1,7 @@
 <div class="page-header" align="center">
   <h1><%= @trip.name %><br/>
     <small>
-      <%= Date.parse(@trip.start_date.to_s).strftime("%B %d, %Y") %> <% if !@trip.end_date.blank? then %> - <%= Date.parse(@trip.end_date.to_s).strftime("%B %d, %Y") %><% end %>
+      <%= Date.parse(@trip.start_date.to_s).strftime("%B %d, %Y") %> <% if (!@trip.end_date.blank? && (@trip.start_date != @trip.end_date)) then %> - <%= Date.parse(@trip.end_date.to_s).strftime("%B %d, %Y") %><% end %>
     </small>
   </h1>
 </div>
