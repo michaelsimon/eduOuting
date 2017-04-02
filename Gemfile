@@ -37,6 +37,8 @@ group :development, :test do
   gem 'spring'
   # Allow for rails console within web browser (as necessary)
   gem 'web-console', '~> 3.0'
+  # Generates diagrams to view relationships between models
+  gem "rails-erd"
 end
 
 group :production do
