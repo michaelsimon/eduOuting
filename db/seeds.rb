@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+students = Student.all
+  students.each do |s|
+    StudentSection.create(student_id: s.id, section_id: s.section_id)
+  end 
