@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
   end
 
   def show
-    @students = Student.where(section_id: @section.id)
+    @students = Student.joins(:student_sections).where(:student_sections => {section_id: @section.id})
   end
 
   def new
