@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305031958) do
+ActiveRecord::Schema.define(version: 20170402215701) do
 
   create_table "homes", force: :cascade do |t|
     t.datetime "created_at"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20170305031958) do
     t.string   "last_name",           limit: 255
     t.string   "emerg_contact_name",  limit: 255
     t.string   "emerg_contact_phone", limit: 255
-    t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
