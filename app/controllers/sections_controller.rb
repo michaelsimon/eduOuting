@@ -12,7 +12,6 @@ class SectionsController < ApplicationController
 
   def new
     @section = Section.new
-    @teachers = Teacher.all
   end
 
   def create
@@ -26,7 +25,6 @@ class SectionsController < ApplicationController
   end
 
   def edit
-    @teachers = Teacher.all
   end
 
   def update
@@ -47,7 +45,7 @@ class SectionsController < ApplicationController
 
   private
   def section_params
-    params.require(:section).permit(:name)
+    params.require(:section).permit(:name, {student_ids:[]})
   end
 
   def get_section
